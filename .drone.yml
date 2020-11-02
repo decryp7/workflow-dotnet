@@ -10,7 +10,7 @@ steps:
       from_secret: repo_password
   commands:
   - dotnet test --logger "console;verbosity=detailed" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-  - curl -v -u $repo_username:$repo_password --upload-file SimpleWorkflow.Test/coverage.opencover.xml https://repository.decryptology.net/repository/artifacts/SimpleWorkflow.Test/coverage.opencover.xml
+  - curl -v -u $repo_username:$repo_password --upload-file src/SimpleWorkflow.Test/coverage.opencover.xml https://repository.decryptology.net/repository/artifacts/SimpleWorkflow.Test/coverage.opencover.xml
 - name: build
   image: mcr.microsoft.com/dotnet/core/sdk:2.2
   environment:
