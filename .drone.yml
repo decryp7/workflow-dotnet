@@ -3,9 +3,15 @@ kind: pipeline
 steps:
 - name: test
   image: mcr.microsoft.com/dotnet/core/sdk:2.2
+  environment:
+    repo_username:
+      from_secret: repo_username
+    repo_password:
+      from_secret: repo_password
   commands:
   - dotnet test --logger "console;verbosity=detailed" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-- name: build
+  - $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $env:repo_username,$env:repo_password)))
+  - Invoke-RestMethod -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -uri https://repository.decryptology.net/repository/artifacts/SimpleWorkflow/coverage.opencover.xml -Method Put -Infile src/SimpleWorkflow/coverage.opencover.xml
   image: mcr.microsoft.com/dotnet/core/sdk:2.2
   environment:
     nuget_api_key:
