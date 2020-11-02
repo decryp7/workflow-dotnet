@@ -289,12 +289,14 @@ namespace SimpleWorkflow.Test
                 new DummyActivity(executionFunc: () =>
                 {
                     firstActivityCompleted.Set();
+                    Thread.Sleep(1000);
                     return new ActivityExecutionResult().SetSuccessful();
                 }, publishError: true,
                     publishEvent: true))
                 .SetCompletionPercentage(100);
 
-            dummyWorkflowTwo.Do(new DummyActivity(executionFunc: () => new ActivityExecutionResult().SetFailed()))
+            dummyWorkflowTwo.Do(new DummyActivity(executionFunc: () =>
+                    new ActivityExecutionResult().SetFailed()))
                 .SetCompletionPercentage(100)
                 .SetRollbackActivity(
                     new DummyActivity(executionFunc: () => new ActivityExecutionResult().SetSuccessful(),
