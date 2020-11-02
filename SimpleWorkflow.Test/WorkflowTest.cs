@@ -31,8 +31,6 @@ namespace SimpleWorkflow.Test
                 new DummyWorkflowContext()
             };
 
-            int testArgIndex = 0;
-
             for (int argumentIndex = 0; argumentIndex < args.Length; argumentIndex++)
             {
                 try
