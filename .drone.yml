@@ -4,7 +4,7 @@ steps:
 - name: test
   image: mcr.microsoft.com/dotnet/core/sdk:2.2
   commands:
-  - dotnet test --logger "console;verbosity=detailed"
+  - dotnet test --logger "console;verbosity=detailed" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
 - name: build
   image: mcr.microsoft.com/dotnet/core/sdk:2.2
   environment:
