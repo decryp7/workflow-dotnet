@@ -24,6 +24,7 @@ steps:
     source: /drone/src/SimpleWorkflow.Test/report/*
     target: /SimpleWorkflow.Test
     path_style: true
+    strip_prefix: /drone/src/SimpleWorkflow.Test/report
     endpoint: https://s3.decryptology.net
 - name: build
   image: mcr.microsoft.com/dotnet/core/sdk:2.2
