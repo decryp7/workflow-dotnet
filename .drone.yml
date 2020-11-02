@@ -12,7 +12,8 @@ steps:
   - export PATH="$PATH:/root/.dotnet/tools"
   - dotnet tool install -g dotnet-reportgenerator-globaltool
   - dotnet test --logger "console;verbosity=detailed" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-  - reportgenerator -reports:/drone/src/SimpleWorkflow.Test/coverage.opencover.xml -targetdir:/drone/src/SimpleWorkflow.Test/report -reporttypes:"HtmlSummary" -title:IntegrationTest
+  - reportgenerator -reports:/drone/src/SimpleWorkflow.Test/coverage.opencover.xml -targetdir:/drone/src/SimpleWorkflow.Test/report -reporttypes:"Html" -title:IntegrationTest
+  - zip -r code-coverage.zip /drone/src/SimpleWorkflow.Test/report 
   - curl -v -u $repo_username:$repo_password --upload-file /drone/src/SimpleWorkflow.Test/report/summary.html https://repository.decryptology.net/repository/artifacts/SimpleWorkflow.Test/code-coverage.html
 - name: build
   image: mcr.microsoft.com/dotnet/core/sdk:2.2
