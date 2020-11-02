@@ -4,10 +4,9 @@ steps:
 - name: test
   image: mcr.microsoft.com/dotnet/core/sdk:2.2
   commands:
-  - dotnet tool install --global coverlet.console
-  - dotnet test --collect:"XPlat Code Coverage" --logger "console;verbosity=detailed"
+  - dotnet test --logger "console;verbosity=detailed"
 - name: build
-  image: microsoft/dotnet:sdk
+  image: mcr.microsoft.com/dotnet/core/sdk:2.2
   environment:
     nuget_api_key:
       from_secret: nuget_api_key
