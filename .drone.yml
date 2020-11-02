@@ -1,13 +1,16 @@
 kind: pipeline
 
 steps:
-- name: compile
+- name: test
+  image: microsoft/dotnet:sdk
+  commands:
+  - dotnet test
+- name: build
   image: microsoft/dotnet:sdk
   environment:
     nuget_api_key:
       from_secret: nuget_api_key
   commands:
-  - dotnet test
   - dotnet pack
   - dotnet nuget push /drone/src/SimpleWorkflow/bin/Debug/SimpleWorkflow.1.0.0.nupkg --api-key $nuget_api_key --source https://repository.decryptology.net/repository/Nuget/index.json
 
