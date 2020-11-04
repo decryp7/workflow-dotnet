@@ -7,7 +7,7 @@ namespace SimpleWorkflow
     {
         public static void WriteDebug(this string s)
         {
-            Debug.WriteLine(s);
+            Console.WriteLine(s);
         }
     }
 }
