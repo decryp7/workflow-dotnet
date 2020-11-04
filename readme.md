@@ -1,4 +1,4 @@
 [![Build Status](https://ci.decryptology.net/api/badges/decryp7/workflow-dotnet/status.svg)](https://ci.decryptology.net/decryp7/workflow-dotnet) [![Code Coverage](https://s3.decryptology.net/code-coverage/SimpleWorkflow.Test/badge_linecoverage.svg)](https://s3.decryptology.net/code-coverage/SimpleWorkflow.Test/index.html) [![Code Coverage](https://s3.decryptology.net/code-coverage/SimpleWorkflow.Test/badge_branchcoverage.svg)](https://s3.decryptology.net/code-coverage/SimpleWorkflow.Test/index.html)
 
-![Get latest caddy version](https://dev.decryptology.net/decryp7/workflow-dotnet/raw/branch/master/GetLatestCaddyVersion.gif)  
+![Get latest caddy version](https://s3.decryptology.net/dev/workflow-dotnet/GetLatestCaddyVersion.gif)  
 *Get latest caddy version from https://github.com/caddyserver/caddy/releases.atom running on Ubuntu*
