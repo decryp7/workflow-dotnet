@@ -322,7 +322,7 @@ public abstract class Workflow<TWorkflowContext> : IWorkflow, IRequireWorkflowEn
 
             string message = args.Length > 0 ? string.Format(CultureInfo.CurrentCulture, format, args) : format;
 
-            FormattableString.Invariant($"[Workflow({GetType().Name},{Name})] {message}");
+            FormattableString.Invariant($"[Workflow({GetType().Name},{Name})] {message}").WriteDebug();
         }
     }
 }
