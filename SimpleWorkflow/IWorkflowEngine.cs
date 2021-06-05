@@ -1,4 +1,6 @@
-﻿namespace SimpleWorkflow
+﻿using System.Threading.Tasks;
+
+namespace SimpleWorkflow
 {
     /// <summary>
     /// Workflow engine started event
@@ -284,7 +286,7 @@
         /// <summary>
         /// Run the workflows in another thread without blocking the current thread
         /// </summary>
-        void RunAsync();
+        Task<WorkflowEngineExecutionResult> RunAsync();
 
         /// <summary>
         /// Stop the workflow engine

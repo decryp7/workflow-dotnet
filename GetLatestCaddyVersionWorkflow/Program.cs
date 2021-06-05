@@ -17,7 +17,7 @@ namespace GetLatestCaddyVersionWorkflow
 
             IWorkflowEngine workflowEngine = new WorkflowEngine();
             workflowEngine.Queue(getLatestCaddyVersion);
-            WorkflowEngineExecutionResult executionResult = workflowEngine.Run();
+            WorkflowEngineExecutionResult executionResult = workflowEngine.RunAsync().GetAwaiter().GetResult();
 
             Console.WriteLine(
                 FormattableString.Invariant($"Workflow engine execution result: {executionResult.ResultKind}"));

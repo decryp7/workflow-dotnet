@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using GuardLibrary;
 using SimpleWorkflow.Events;
 using SimpleWorkflow.Events.Payload;
-using SimpleWorkflow.SanityCheck;
 
 namespace SimpleWorkflow
 {

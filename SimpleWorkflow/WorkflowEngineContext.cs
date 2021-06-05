@@ -1,5 +1,5 @@
-﻿using SimpleWorkflow.Events;
-using SimpleWorkflow.SanityCheck;
+﻿using GuardLibrary;
+using SimpleWorkflow.Events;
 
 namespace SimpleWorkflow
 {

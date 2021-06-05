@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using SimpleWorkflow.SanityCheck;
+using GuardLibrary;
 
 namespace SimpleWorkflow
 {

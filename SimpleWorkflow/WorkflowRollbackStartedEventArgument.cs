@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Globalization;
-using SimpleWorkflow.SanityCheck;
+using GuardLibrary;
 
 namespace SimpleWorkflow
 {

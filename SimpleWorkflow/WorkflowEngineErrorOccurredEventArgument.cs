@@ -1,5 +1,5 @@
 ﻿using System;
-using SimpleWorkflow.SanityCheck;
+using GuardLibrary;
 
 namespace SimpleWorkflow
 {

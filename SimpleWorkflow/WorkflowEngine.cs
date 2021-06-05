@@ -6,9 +6,9 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using GuardLibrary;
 using SimpleWorkflow.Events;
 using SimpleWorkflow.Events.Payload;
-using SimpleWorkflow.SanityCheck;
 
 namespace SimpleWorkflow
 {
@@ -386,7 +386,7 @@ namespace SimpleWorkflow
             return workflowEngineExecutionResult;
         }
 
-        public void RunAsync()
+        public Task<WorkflowEngineExecutionResult> RunAsync()
         {
             Guard.EnsureThisConditionIsMet(() => State != WorkflowEngineState.Running)
                 .OrThrowException(new InvalidOperationException("Workflow engine is already running!"));
@@ -394,7 +394,7 @@ namespace SimpleWorkflow
                 .OrThrowException(new InvalidOperationException("There are no workflows queued for execution!"));
 
             WriteDebug("Executing workflows on a new thread...");
-            Task.Factory.StartNew(() => Run());
+            return Task.Run(() => Run());
         }
 
         public virtual void CancelAsync()

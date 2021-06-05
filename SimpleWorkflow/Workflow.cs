@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using GuardLibrary;
 using SimpleWorkflow.Events;
 using SimpleWorkflow.Events.Payload;
-using SimpleWorkflow.SanityCheck;
 
 namespace SimpleWorkflow
 {

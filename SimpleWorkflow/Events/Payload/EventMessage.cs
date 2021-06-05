@@ -1,4 +1,4 @@
-﻿using SimpleWorkflow.SanityCheck;
+﻿using GuardLibrary;
 
 namespace SimpleWorkflow.Events.Payload
 {

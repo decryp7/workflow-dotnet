@@ -2,7 +2,7 @@ kind: pipeline
 
 steps:
 - name: test
-  image: mcr.microsoft.com/dotnet/core/sdk:2.1
+  image: mcr.microsoft.com/dotnet/sdk:5.0
   environment: 
     repo_username:
       from_secret: repo_username
@@ -10,6 +10,7 @@ steps:
       from_secret: repo_password
   commands:
   - export PATH="$PATH:/root/.dotnet/tools"
+  - dotnet nuget add source https://repository.decryptology.net/repository/Nuget/ -n decryptology.net
   - dotnet tool install -g dotnet-reportgenerator-globaltool
   - dotnet test --logger "console;verbosity=detailed" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
   - reportgenerator -reports:/drone/src/SimpleWorkflow.Test/coverage.opencover.xml -targetdir:/drone/src/SimpleWorkflow.Test/report -reporttypes:"Badges;Html" -title:"SimpleWorkflow Code Coverage"
@@ -27,11 +28,12 @@ steps:
     strip_prefix: /drone/src/SimpleWorkflow.Test/report
     endpoint: https://s3.decryptology.net
 - name: build
-  image: mcr.microsoft.com/dotnet/core/sdk:2.1
+  image: mcr.microsoft.com/dotnet/sdk:5.0
   environment:
     nuget_api_key:
       from_secret: nuget_api_key
   commands:
+  - dotnet nuget add source https://repository.decryptology.net/repository/Nuget/ -n decryptology.net
   - dotnet pack
   - dotnet nuget push /drone/src/SimpleWorkflow/bin/Debug/SimpleWorkflow.1.0.0.nupkg --api-key $nuget_api_key --source https://repository.decryptology.net/repository/Nuget/index.json
 
