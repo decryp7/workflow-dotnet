@@ -33,5 +33,5 @@ steps:
       from_secret: nuget_api_key
   commands:
   - dotnet pack
-  - dotnet nuget push /drone/src/SimpleWorkflow/bin/Debug/SimpleWorkflow.2.0.0.nupkg --api-key $nuget_api_key --source https://repository.decryptology.net/repository/Nuget/index.json
+  - dotnet nuget push /drone/src/SimpleWorkflow/bin/Debug/SimpleWorkflow.1.0.0.nupkg --api-key $nuget_api_key --source https://repository.decryptology.net/repository/Nuget/index.json
 
