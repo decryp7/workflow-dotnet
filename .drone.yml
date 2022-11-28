@@ -2,7 +2,7 @@ kind: pipeline
 
 steps:
 - name: test
-  image: mcr.microsoft.com/dotnet/core/sdk:2.1
+  image: mcr.microsoft.com/dotnet/sdk:7.0
   environment: 
     repo_username:
       from_secret: repo_username
@@ -27,7 +27,7 @@ steps:
     strip_prefix: /drone/src/SimpleWorkflow.Test/report
     endpoint: https://s3.decryptology.net
 - name: build
-  image: mcr.microsoft.com/dotnet/core/sdk:2.1
+  image: mcr.microsoft.com/dotnet/sdk:7.0
   environment:
     nuget_api_key:
       from_secret: nuget_api_key
